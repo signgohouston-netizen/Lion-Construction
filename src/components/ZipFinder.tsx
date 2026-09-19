@@ -15,7 +15,7 @@ export function ZipFinder({ initialZip = "" }: { initialZip?: string }) {
     const city = findCityByZip(zip);
     if (city) {
       setError(null);
-      router.push(`/service-areas/${city.slug}`);
+      router.push(`/zip/${zip.trim()}`);
     } else if (/^7[5-9]\d{3}$/.test(zip.trim())) {
       setError("That ZIP is in Texas but outside our listed areas. Request an estimate and we will confirm availability.");
     } else {

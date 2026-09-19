@@ -17,7 +17,8 @@ npx next build     # must pass before shipping
 | Path                              | What it is                                                                 |
 | --------------------------------- | -------------------------------------------------------------------------- |
 | `src/data/site.ts`                | Business profile: name, phone, address, hours, socials, logo, photo slots. |
-| `src/data/services.ts`            | The 13 services. Each entry becomes `/services/<slug>`.                    |
+| `src/data/services.ts`            | The 16 services. Each entry becomes `/services/<slug>`.                    |
+| `src/data/city-details.ts`        | Housing notes, common projects and ZIP → neighborhood map per city.        |
 | `src/data/cities.ts`              | Service-area cities with ZIP codes, neighborhoods and permit authority.    |
 | `src/data/projects.ts`            | Portfolio projects → `/projects/<slug>`.                                   |
 | `src/data/reviews.ts`             | Testimonials shown across the site (also emitted as Review schema).        |
@@ -32,8 +33,9 @@ npx next build     # must pass before shipping
 - Home, About, Services hub, Projects hub + detail, Reviews, Blog hub + posts, Contact, Privacy, Terms
 - One page per service: `/services/roofing`
 - One page per city: `/service-areas/katy`
-- One page per **service × city**: `/services/roofing/katy` (services × cities ≈ 570 pages)
-- Every ZIP code is listed on its city page and on `/service-areas`, and the ZIP finder maps a ZIP to its city.
+- One page per **service × city**: `/services/roofing/katy` (services × cities ≈ 700 pages)
+- One page per **ZIP code**: `/zip/77008` (≈ 280 pages) with the neighborhood, nearby ZIPs, services and an estimate form
+- Visible "Popular searches" keyword blocks on the home, service, city, service × city and ZIP pages (`src/lib/keywords.ts`)
 
 Adding a city or service is a data-file edit; every dependent page, sitemap entry and schema block updates.
 

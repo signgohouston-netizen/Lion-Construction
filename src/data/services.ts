@@ -18,7 +18,10 @@ export type Service = {
     | "PaintRoller"
     | "House"
     | "DoorOpen"
-    | "Grid3x3";
+    | "Grid3x3"
+    | "DraftingCompass"
+    | "ClipboardCheck"
+    | "Tractor";
   excerpt: string;
   intro: string[];
   features: string[];
@@ -479,6 +482,109 @@ export const services: Service[] = [
     ],
     keywords: ["flooring installation", "flooring contractor", "LVP installation", "tile installer", "hardwood floors"],
     timeline: "2 – 5 days",
+  },
+  {
+    slug: "design-build-preconstruction",
+    name: "Design-Build & Preconstruction",
+    shortName: "Design-Build",
+    icon: "DraftingCompass",
+    featured: true,
+    excerpt:
+      "One contract for design and construction, with preconstruction budgeting and value engineering that removes surprises before the first shovel.",
+    intro: [
+      "Design-build puts the architect, engineer, estimator and builder on the same team from day one. Instead of designing a project, bidding it out and discovering it is over budget, you get real-time pricing as the drawings develop and a single point of accountability through completion.",
+      "Our preconstruction services include feasibility studies, conceptual estimates, constructability reviews, scheduling, permit strategy and value engineering. Commercial owners, developers and homeowners building custom use this approach to lock budget and schedule early.",
+    ],
+    features: [
+      "Feasibility and site analysis",
+      "Conceptual and detailed cost estimating",
+      "Architectural and engineering coordination",
+      "Value engineering and constructability review",
+      "Permit strategy and jurisdiction coordination",
+      "Guaranteed maximum price contracts",
+    ],
+    process: [
+      { title: "Discovery", text: "Program, budget, site and schedule goals defined together." },
+      { title: "Concept & estimate", text: "Schematic drawings priced in real time with alternates." },
+      { title: "Design development", text: "Engineering, selections and permit set with a locked GMP." },
+      { title: "Build", text: "The same team that designed it builds it, on one contract." },
+    ],
+    faqs: [
+      { q: "What is design-build?", a: "A delivery method where one firm is responsible for both design and construction under a single contract, which removes finger-pointing between architect and builder and shortens the schedule." },
+      { q: "Is design-build more expensive?", a: "It is usually less. Continuous cost feedback during design avoids redesign, and overlapping design and permitting with early construction shortens the timeline." },
+      { q: "Do you work with my architect?", a: "Yes. We can join as construction manager during design or bring our architect partners, whichever fits your project." },
+      { q: "What is a GMP?", a: "A guaranteed maximum price: the most you will pay for the defined scope. Savings below the GMP return to you." },
+    ],
+    keywords: ["design build contractor", "design-build construction", "preconstruction services", "construction cost estimating", "value engineering"],
+    timeline: "Preconstruction 4 – 12 weeks; build per project",
+  },
+  {
+    slug: "construction-management",
+    name: "Construction Management",
+    shortName: "Construction Management",
+    icon: "ClipboardCheck",
+    excerpt:
+      "Owner's-side management of schedule, budget, safety and quality for commercial and multi-site projects across Texas.",
+    intro: [
+      "When you have a project team already in place, or several projects at once, Lion Construction serves as construction manager: we run the schedule, manage bids and subcontracts, enforce safety, track budget and report to ownership.",
+      "We manage tenant improvements for property owners, roofing and repair programs for portfolios, and ground-up commercial projects for developers who want an experienced Houston builder on their side of the table.",
+    ],
+    features: [
+      "Bid management and subcontractor procurement",
+      "Master schedule and look-ahead planning",
+      "Budget tracking and pay-application review",
+      "Safety programs and OSHA compliance",
+      "Quality control and punch management",
+      "Owner reporting and closeout documentation",
+    ],
+    process: [
+      { title: "Planning", text: "Scope, schedule, budget and procurement strategy." },
+      { title: "Procurement", text: "Bid packages, leveling and subcontract award." },
+      { title: "Construction", text: "Daily supervision, safety, RFIs and reporting." },
+      { title: "Closeout", text: "Punch list, commissioning, warranties and as-builts." },
+    ],
+    faqs: [
+      { q: "What is the difference between CM and general contracting?", a: "As general contractor we hold the trade contracts and deliver a fixed price. As construction manager we manage the work on your behalf for a fee, and trade contracts may be held by you." },
+      { q: "Do you manage multi-site programs?", a: "Yes. We run roofing, repair and tenant-improvement programs across multiple properties with a single reporting structure." },
+      { q: "Can you take over a troubled project?", a: "We regularly step in mid-project to re-baseline schedule and budget and bring the job to completion." },
+      { q: "What reporting do owners receive?", a: "Weekly schedule and budget reports, photo logs, safety records and a monthly executive summary." },
+    ],
+    keywords: ["construction management company", "construction manager Houston", "commercial project management", "owner's representative construction"],
+    timeline: "Per project",
+  },
+  {
+    slug: "land-clearing-site-prep",
+    name: "Land Clearing & Site Preparation",
+    shortName: "Land Clearing",
+    icon: "Tractor",
+    excerpt:
+      "Lot clearing, tree removal, grading, right-of-way clearing, culverts and pad preparation for residential, commercial and utility projects.",
+    intro: [
+      "Before anything can be built, the land has to be ready. Lion Construction clears lots and acreage, removes and mulches trees, grades for drainage, builds pads and access roads, and installs culverts and driveways across Greater Houston and Southeast Texas.",
+      "Our right-of-way clearing and construction-prep crews support utility, pipeline and roadway contractors with mulching, brush removal and access preparation, with erosion control and permits handled as part of the scope.",
+    ],
+    features: [
+      "Lot and acreage clearing with forestry mulchers",
+      "Tree removal and stump grinding",
+      "Grading, drainage and building pads",
+      "Right-of-way and easement clearing",
+      "Culverts, driveways and access roads",
+      "Erosion control and SWPPP compliance",
+    ],
+    process: [
+      { title: "Site walk", text: "Boundaries, trees to save, drainage and access reviewed." },
+      { title: "Plan & permits", text: "Clearing plan, tree permits where required, erosion control." },
+      { title: "Clear & grade", text: "Mulching, removal, grading and pad construction." },
+      { title: "Finish", text: "Culverts, driveway base and final grade ready for construction." },
+    ],
+    faqs: [
+      { q: "How much does land clearing cost per acre?", a: "It depends on tree density, access and whether material is mulched on site or hauled. We quote after a site walk with a fixed per-project price." },
+      { q: "Do you need a permit to clear land in Houston?", a: "The City of Houston regulates certain trees in the right-of-way, and Harris County requires floodplain development permits in mapped zones. We check and file for you." },
+      { q: "Can you build a house pad on my lot?", a: "Yes. We clear, grade, compact and build engineered pads for slab foundations, and can add drainage swales and culverts." },
+      { q: "Do you do right-of-way clearing for utilities?", a: "Yes. We support utility and pipeline contractors with mulching, brush removal and access roads across Southeast Texas." },
+    ],
+    keywords: ["land clearing Houston", "lot clearing", "site preparation contractor", "right of way clearing", "tree removal and grading", "building pad construction"],
+    timeline: "1 – 10 days per site",
   },
 ];
 

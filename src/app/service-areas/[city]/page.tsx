@@ -14,6 +14,10 @@ import { cities, getCity, metroCities } from "@/data/cities";
 import { projects } from "@/data/projects";
 import { reviews } from "@/data/reviews";
 import { site, absoluteUrl } from "@/data/site";
+import { getCityDetail, zipArea } from "@/data/city-details";
+import { RelatedSearches } from "@/components/RelatedSearches";
+import { cityKeywords } from "@/lib/keywords";
+import { photo } from "@/lib/photos";
 
 export function generateStaticParams() {
   return cities.map((c) => ({ city: c.slug }));
@@ -36,6 +40,7 @@ export default async function CityPage({ params }: PageProps<"/service-areas/[ci
   const city = getCity(slug);
   if (!city) notFound();
 
+  const detail = getCityDetail(city.slug);
   const localProjects = projects.filter((p) => p.city === city.slug);
   const localReviews = reviews.filter((r) => r.city === city.slug);
   const nearby = metroCities.filter((c) => c.slug !== city.slug).sort((a, b) => Math.hypot(a.lat - city.lat, a.lng - city.lng) - Math.hypot(b.lat - city.lat, b.lng - city.lng)).slice(0, 8);
@@ -67,6 +72,8 @@ export default async function CityPage({ params }: PageProps<"/service-areas/[ci
       <JsonLd data={localBusiness} />
       <Hero
         compact
+        image={photo(site.photos.siteTablet)}
+        imageAlt={`Lion Construction crew on a job site in ${city.name}, TX`}
         crumbs={[{ name: "Service Areas", path: "/service-areas" }, { name: city.name, path: `/service-areas/${city.slug}` }]}
         eyebrow={`${city.county} · Texas`}
         title="General contractor in"
@@ -96,15 +103,30 @@ export default async function CityPage({ params }: PageProps<"/service-areas/[ci
             <SectionHeading eyebrow="Local knowledge" title={`Working in ${city.name}`} />
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted">
               <p>{city.blurb}</p>
+              {detail && <p>{detail.housing}</p>}
               <p>Permits for structural, electrical, plumbing and mechanical work in {city.name} are issued by {city.permitAuthority}. We prepare the drawings, file the application and meet the inspector so your project passes the first time.</p>
             </div>
+            {detail && (
+              <>
+                <h3 className="font-display mt-10 text-2xl font-semibold uppercase text-navy">What {city.name} hires us for</h3>
+                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {detail.commonProjects.map((c) => <li key={c} className="rounded-lg border border-stone-warm bg-white px-4 py-3 text-sm text-ink">{c}</li>)}
+                </ul>
+              </>
+            )}
             <h3 className="font-display mt-10 text-2xl font-semibold uppercase text-navy">Neighborhoods</h3>
             <div className="mt-4 flex flex-wrap gap-2">
               {city.neighborhoods.map((n) => <span key={n} className="rounded-full bg-white px-3 py-1 text-sm text-navy">{n}</span>)}
             </div>
             <h3 className="font-display mt-10 text-2xl font-semibold uppercase text-navy">{city.name} ZIP codes we serve</h3>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {city.zips.map((z) => <span key={z} className="rounded border border-stone-warm bg-white px-2.5 py-1 font-mono text-sm text-navy">{z}</span>)}
+            <p className="mt-2 text-sm text-muted">Each ZIP has its own page with local details and an estimate form.</p>
+            <div className="mt-4 grid gap-2 sm:grid-cols-2">
+              {city.zips.map((z) => (
+                <Link key={z} href={`/zip/${z}`} className="flex items-center justify-between rounded border border-stone-warm bg-white px-3 py-2 text-sm text-navy hover:border-gold hover:text-gold-dark">
+                  <span className="font-mono">{z}</span>
+                  <span className="truncate pl-3 text-xs text-muted">{zipArea(city.slug, z) ?? city.name}</span>
+                </Link>
+              ))}
             </div>
           </div>
           <aside className="lg:col-span-5">
@@ -149,6 +171,7 @@ export default async function CityPage({ params }: PageProps<"/service-areas/[ci
         </div>
       </Section>
 
+      <RelatedSearches title={`Popular searches in ${city.name}`} keywords={cityKeywords(city)} />
       <CtaBand title={`Planning a project in ${city.name}?`} />
     </>
   );

@@ -14,6 +14,10 @@ import { cities, getCity, metroCities } from "@/data/cities";
 import { projects } from "@/data/projects";
 import { reviews } from "@/data/reviews";
 import { site } from "@/data/site";
+import { getCityDetail, zipArea } from "@/data/city-details";
+import { RelatedSearches } from "@/components/RelatedSearches";
+import { serviceCityKeywords } from "@/lib/keywords";
+import { photo } from "@/lib/photos";
 
 export function generateStaticParams() {
   return services.flatMap((s) => cities.map((c) => ({ service: s.slug, city: c.slug })));
@@ -42,6 +46,7 @@ export default async function ServiceCityPage({ params }: PageProps<"/services/[
   const city = getCity(cSlug);
   if (!service || !city) notFound();
 
+  const detail = getCityDetail(city.slug);
   const localProjects = projects.filter((p) => p.city === city.slug);
   const localReviews = reviews.filter((r) => r.city === city.slug || r.service === service.slug).slice(0, 3);
   const otherServices = services.filter((s) => s.slug !== service.slug).slice(0, 6);
@@ -59,6 +64,8 @@ export default async function ServiceCityPage({ params }: PageProps<"/services/[
       <JsonLd data={serviceJsonLd(service, city)} />
       <Hero
         compact
+        image={photo(site.photos.blueprintOverhead)}
+        imageAlt={`${service.name} in ${city.name}, TX by Lion Construction`}
         crumbs={[
           { name: "Services", path: "/services" },
           { name: service.name, path: `/services/${service.slug}` },
@@ -82,6 +89,7 @@ export default async function ServiceCityPage({ params }: PageProps<"/services/[
             <SectionHeading eyebrow={`${service.shortName} · ${city.name}`} title={`${service.shortName} for ${city.name} homes and businesses`} />
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted">
               <p>{city.blurb}</p>
+              {detail && <p>{detail.housing}</p>}
               {service.intro.map((p) => <p key={p}>{p}</p>)}
             </div>
 
@@ -100,7 +108,9 @@ export default async function ServiceCityPage({ params }: PageProps<"/services/[
             <h3 className="font-display mt-10 text-2xl font-semibold uppercase text-navy">{city.name} ZIP codes served</h3>
             <p className="mt-2 text-sm text-muted">{service.name} available in every {city.name} ZIP code:</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              {city.zips.map((z) => <span key={z} className="rounded border border-stone-warm px-2.5 py-1 font-mono text-sm text-navy">{z}</span>)}
+              {city.zips.map((z) => (
+                <Link key={z} href={`/zip/${z}`} className="rounded border border-stone-warm px-2.5 py-1 font-mono text-sm text-navy hover:border-gold hover:text-gold-dark" title={zipArea(city.slug, z) ?? city.name}>{z}</Link>
+              ))}
             </div>
           </div>
 
@@ -167,6 +177,7 @@ export default async function ServiceCityPage({ params }: PageProps<"/services/[
         </p>
       </Section>
 
+      <RelatedSearches title={`Popular ${service.shortName.toLowerCase()} searches in ${city.name}`} keywords={serviceCityKeywords(service, city)} />
       <CtaBand title={`Need ${service.shortName.toLowerCase()} in ${city.name}?`} text={`Schedule a free on-site estimate anywhere in ${city.name}. Most visits are booked within 48 hours.`} />
     </>
   );

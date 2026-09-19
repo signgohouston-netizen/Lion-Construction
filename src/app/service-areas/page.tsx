@@ -7,6 +7,8 @@ import { ZipFinder } from "@/components/ZipFinder";
 import { buildMetadata } from "@/lib/seo";
 import { metroCities, texasCities, allZips, findCityByZip } from "@/data/cities";
 import { site } from "@/data/site";
+import { RelatedSearches } from "@/components/RelatedSearches";
+import { homeKeywords } from "@/lib/keywords";
 import { photo } from "@/lib/photos";
 
 export const metadata = buildMetadata({
@@ -29,7 +31,7 @@ export default async function ServiceAreasPage({ searchParams }: PageProps<"/ser
           <div className="mt-3"><ZipFinder initialZip={zipParam} /></div>
           {matched && (
             <p className="mt-3 text-sm text-white/85">
-              ZIP {zipParam} is in <Link href={`/service-areas/${matched.slug}`} className="font-semibold text-gold underline">{matched.name}, TX</Link>.
+              ZIP {zipParam} is in <Link href={`/zip/${zipParam}`} className="font-semibold text-gold underline">{matched.name}, TX</Link>.
             </p>
           )}
         </div>
@@ -50,12 +52,12 @@ export default async function ServiceAreasPage({ searchParams }: PageProps<"/ser
       </Section>
 
       <Section>
-        <SectionHeading eyebrow="ZIP code directory" title="Every ZIP code we serve" text="Find your ZIP below and click through to the city page for local services, permits and projects." />
+        <SectionHeading eyebrow="ZIP code directory" title="Every ZIP code we serve" text="Every ZIP code has its own page with local services, permits, nearby ZIPs and a direct estimate form." />
         <div className="mt-10 columns-2 gap-4 text-sm sm:columns-4 lg:columns-6">
           {allZips.map((z) => {
             const c = findCityByZip(z)!;
             return (
-              <Link key={z} href={`/service-areas/${c.slug}`} className="block break-inside-avoid py-1 font-mono text-navy hover:text-gold-dark">
+              <Link key={z} href={`/zip/${z}`} className="block break-inside-avoid py-1 font-mono text-navy hover:text-gold-dark">
                 {z} <span className="font-sans text-xs text-muted">{c.name}</span>
               </Link>
             );
@@ -63,6 +65,7 @@ export default async function ServiceAreasPage({ searchParams }: PageProps<"/ser
         </div>
       </Section>
 
+      <RelatedSearches keywords={homeKeywords()} />
       <CtaBand title="Don't see your city?" text="We regularly take on projects beyond the list. Tell us where you are and what you need." />
     </>
   );

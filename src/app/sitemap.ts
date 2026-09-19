@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/data/site";
 import { services } from "@/data/services";
-import { cities } from "@/data/cities";
+import { cities, allZips } from "@/data/cities";
 import { projects } from "@/data/projects";
 import { posts } from "@/data/posts";
 
@@ -25,8 +25,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const serviceCityPages = services.flatMap((s) =>
     cities.map((c) => ({ url: absoluteUrl(`/services/${s.slug}/${c.slug}`), lastModified: now, changeFrequency: "monthly" as const, priority: c.tier === "metro" ? 0.7 : 0.4 })),
   );
+  const zipPages = allZips.map((z) => ({ url: absoluteUrl(`/zip/${z}`), lastModified: now, changeFrequency: "monthly" as const, priority: 0.5 }));
   const projectPages = projects.map((p) => ({ url: absoluteUrl(`/projects/${p.slug}`), lastModified: now, changeFrequency: "yearly" as const, priority: 0.6 }));
   const postPages = posts.map((p) => ({ url: absoluteUrl(`/blog/${p.slug}`), lastModified: new Date(p.date), changeFrequency: "yearly" as const, priority: 0.5 }));
 
-  return [...staticPages, ...servicePages, ...cityPages, ...serviceCityPages, ...projectPages, ...postPages];
+  return [...staticPages, ...servicePages, ...cityPages, ...serviceCityPages, ...zipPages, ...projectPages, ...postPages];
 }

@@ -17,7 +17,8 @@ export function buildMetadata({ title, description, path, keywords, noindex, typ
   const url = absoluteUrl(path);
   const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
   return {
-    title: fullTitle,
+    // absolute: skip the root layout's "%s | Lion Construction" template so the brand is not appended twice
+    title: { absolute: fullTitle },
     description,
     keywords,
     alternates: { canonical: url },

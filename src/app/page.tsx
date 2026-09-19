@@ -16,11 +16,13 @@ import { projects } from "@/data/projects";
 import { reviews } from "@/data/reviews";
 import { photo } from "@/lib/photos";
 import Image from "next/image";
+import { RelatedSearches } from "@/components/RelatedSearches";
+import { homeKeywords } from "@/lib/keywords";
 
 export const metadata = buildMetadata({
   title: `${site.name} | Houston General Contractor, Remodeling & Roofing`,
   description:
-    "Lion Construction is a licensed Houston general contractor for kitchen and bathroom remodeling, room additions, roofing and commercial build-outs. Serving Katy, Sugar Land, Pearland, Cypress, The Woodlands and all of Texas. Free estimates.",
+    "Lion Construction is a licensed Houston general contractor for commercial construction, design-build, kitchen and bathroom remodeling, room additions, roofing and land clearing. Serving Katy, Sugar Land, Pearland, Cypress, The Woodlands and all of Texas. Free estimates.",
   path: "/",
   keywords: ["Houston general contractor", "remodeling contractor Houston", "roofing Houston TX", "commercial construction Houston", "home remodeling Katy", "kitchen remodel Sugar Land"],
 });
@@ -49,7 +51,7 @@ export default function HomePage() {
         eyebrow="Licensed & insured · Houston, Texas"
         title="Build it once."
         highlight="Build it right."
-        text="Lion Construction is the general contractor Houston families and businesses trust for remodeling, roofing, additions and commercial build-outs, delivered on schedule with pricing you can read line by line."
+        text="Lion Construction is the Houston general contractor businesses and families trust for commercial construction, design-build, remodeling, roofing, additions and land clearing, delivered on schedule with pricing you can read line by line."
       />
 
       {/* Stats */}
@@ -170,6 +172,7 @@ export default function HomePage() {
         </div>
       </Section>
 
+      <RelatedSearches title="Popular searches" keywords={homeKeywords()} />
       <CtaBand />
     </>
   );

@@ -6,7 +6,9 @@
 export const redirects = [
   // URLs confirmed on the previous site
   { source: "/contact-us", destination: "/contact", permanent: true },
-  { source: "/services/right-of-way-clearing-and-construction-prep", destination: "/services", permanent: true },
+  { source: "/services/right-of-way-clearing-and-construction-prep", destination: "/services/land-clearing-site-prep", permanent: true },
+  { source: "/land-clearing", destination: "/services/land-clearing-site-prep", permanent: true },
+  { source: "/design-build", destination: "/services/design-build-preconstruction", permanent: true },
   { source: "/home", destination: "/", permanent: true },
   { source: "/index.html", destination: "/", permanent: true },
   { source: "/about-us", destination: "/about", permanent: true },

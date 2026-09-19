@@ -16,6 +16,8 @@ import { projects } from "@/data/projects";
 import { reviews } from "@/data/reviews";
 import { site } from "@/data/site";
 import { photo } from "@/lib/photos";
+import { RelatedSearches } from "@/components/RelatedSearches";
+import { serviceKeywords } from "@/lib/keywords";
 
 export function generateStaticParams() {
   return services.map((s) => ({ service: s.slug }));
@@ -146,6 +148,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[serv
         </div>
       </Section>
 
+      <RelatedSearches title={`Popular ${service.shortName.toLowerCase()} searches`} keywords={serviceKeywords(service)} />
       <CtaBand title={`Ready to talk about your ${service.shortName.toLowerCase()} project?`} />
     </>
   );

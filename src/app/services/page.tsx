@@ -6,6 +6,8 @@ import { buildMetadata } from "@/lib/seo";
 import { services } from "@/data/services";
 import { site } from "@/data/site";
 import { photo } from "@/lib/photos";
+import { RelatedSearches } from "@/components/RelatedSearches";
+import { homeKeywords } from "@/lib/keywords";
 
 export const metadata = buildMetadata({
   title: "Construction & Remodeling Services in Houston, TX",
@@ -24,6 +26,7 @@ export default function ServicesPage() {
           {services.map((s) => <ServiceCard key={s.slug} service={s} />)}
         </div>
       </Section>
+      <RelatedSearches keywords={homeKeywords()} />
       <CtaBand />
     </>
   );
