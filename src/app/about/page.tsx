@@ -52,7 +52,7 @@ const team = [
 ];
 
 const faqs = [
-  { q: "Where is Lion Construction located?", a: `Our office is at ${site.address.street}, ${site.address.city}, TX ${site.address.zip}, in the Willowbrook area of northwest Houston. Crews are dispatched across Greater Houston daily and travel statewide for larger commercial, roofing and site-work projects.` },
+  { q: "Where is Lion Construction located?", a: `Our office is at ${site.address.street}, ${site.address.city}, TX ${site.address.zip}, in the Alief area of southwest Houston, just off Beltway 8 and Bissonnet. Crews are dispatched across Greater Houston daily and travel statewide for larger commercial, roofing and site-work projects.` },
   { q: "Are you licensed and insured?", a: "Yes. Lion Construction carries general liability and workers' compensation insurance, holds the trade registrations required by the City of Houston and surrounding cities, and verifies coverage for every subcontractor. Certificates are available on request." },
   { q: "Do you do both commercial and residential work?", a: "Yes. Our commercial division handles build-outs, ground-up projects and construction management; our residential division handles remodels, additions, roofing and custom homes; and our site-work division handles land clearing and preparation." },
   { q: "How do I get a quote?", a: `Call ${site.phoneDisplay}, use the estimate form, or request a visit. A project manager comes to the site, and you receive a written, itemized proposal, usually within a week.` },

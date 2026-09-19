@@ -16,13 +16,13 @@ export const site = {
   email: "info@lionconstructiontx.com",
   emailSocial: "social@lionconstructiontx.com",
   address: {
-    street: "10660 Woodedge Dr",
+    street: "9900 Wilcrest Dr",
     city: "Houston",
     state: "TX",
-    zip: "77070",
+    zip: "77099",
     country: "US",
   },
-  geo: { lat: 29.9553, lng: -95.5658 },
+  geo: { lat: 29.6805, lng: -95.5748 },
   hours: [
     { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "07:00", closes: "18:00" },
     { days: ["Saturday"], opens: "08:00", closes: "14:00" },
