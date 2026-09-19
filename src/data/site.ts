@@ -38,9 +38,9 @@ export const site = {
     yelp: "https://www.yelp.com/biz/lion-construction-houston",
   },
   rating: { value: 4.9, count: 137 },
-  /** Drop your logo at public/images/logo.png (transparent or white background) and it is used everywhere. */
-  logo: "/images/logo.svg",
-  logoDark: "/images/logo.svg",
+  /** Horizontal logo, transparent background, black + gold. */
+  logo: "/images/logo.png",
+  logoDark: "/images/logo.png",
   serviceRadiusMiles: 60,
   /**
    * Team / job-site photography. Save each photo under public/images/team/ with the filename below.

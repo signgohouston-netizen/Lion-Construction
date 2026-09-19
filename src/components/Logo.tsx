@@ -12,10 +12,11 @@ export function Logo({ dark = false, className, priority = false }: { dark?: boo
       <Image
         src={dark ? site.logoDark : site.logo}
         alt={`${site.name} logo`}
-        width={300}
-        height={200}
+        width={1200}
+        height={349}
         priority={priority}
-        className="h-14 w-auto sm:h-16"
+        sizes="(min-width: 640px) 220px, 180px"
+        className="h-12 w-auto sm:h-14"
       />
     </span>
   );

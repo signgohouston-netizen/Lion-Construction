@@ -53,7 +53,7 @@ export function organizationJsonLd() {
       { "@type": "ContactPoint", telephone: site.phoneDirect, contactType: "sales", areaServed: "US-TX", availableLanguage: ["English", "Spanish"] },
     ],
     image: absoluteUrl("/opengraph-image"),
-    logo: absoluteUrl("/icon.svg"),
+    logo: absoluteUrl("/images/logo.png"),
     priceRange: "$$",
     foundingDate: String(site.founded),
     address: {
@@ -174,6 +174,6 @@ export function articleJsonLd(p: { title: string; description: string; date: str
     dateModified: p.date,
     mainEntityOfPage: absoluteUrl(p.path),
     author: { "@type": "Organization", name: site.name },
-    publisher: { "@type": "Organization", name: site.name, logo: { "@type": "ImageObject", url: absoluteUrl("/icon.svg") } },
+    publisher: { "@type": "Organization", name: site.name, logo: { "@type": "ImageObject", url: absoluteUrl("/images/logo.png") } },
   };
 }

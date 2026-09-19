@@ -1,9 +1,8 @@
 # Images
 
 ## Logo
-`logo.svg` is a temporary stand-in drawn in the brand colors. Replace it with the real logo:
-copy your file to `public/images/logo.png` and change `logo` / `logoDark` in `src/data/site.ts`
-to `/images/logo.png`.
+`logo.png` is the horizontal Lion Construction logo (transparent background). The favicon is
+`src/app/icon.svg` and the iOS home-screen icon is `src/app/apple-icon.png`.
 
 ## Team photos → `public/images/team/`
 Save the photos with these exact filenames. Each page picks up its photo automatically once the
