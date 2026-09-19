@@ -47,6 +47,10 @@ export function organizationJsonLd() {
     url: site.url,
     telephone: site.phone,
     email: site.email,
+    contactPoint: [
+      { "@type": "ContactPoint", telephone: site.phone, contactType: "customer service", areaServed: "US-TX", availableLanguage: ["English", "Spanish"] },
+      { "@type": "ContactPoint", telephone: site.phoneDirect, contactType: "sales", areaServed: "US-TX", availableLanguage: ["English", "Spanish"] },
+    ],
     image: absoluteUrl("/opengraph-image"),
     logo: absoluteUrl("/icon.svg"),
     priceRange: "$$",

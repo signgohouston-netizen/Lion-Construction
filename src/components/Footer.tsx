@@ -19,7 +19,8 @@ export function Footer() {
               {site.tagline}. Family-owned, licensed and insured, and proud of every job we have finished since {site.founded}.
             </p>
             <ul className="mt-6 space-y-3 text-sm">
-              <li className="flex items-start gap-3"><Phone className="mt-0.5 h-4 w-4 text-gold" /><a href={telHref(site.phone)} className="hover:text-white">{site.phoneDisplay}</a></li>
+              <li className="flex items-start gap-3"><Phone className="mt-0.5 h-4 w-4 text-gold" /><span><a href={telHref(site.phone)} className="hover:text-white">{site.phoneDisplay}</a> <span className="text-white/50">Office</span></span></li>
+              <li className="flex items-start gap-3"><Phone className="mt-0.5 h-4 w-4 text-gold" /><span><a href={telHref(site.phoneDirect)} className="hover:text-white">{site.phoneDirectDisplay}</a> <span className="text-white/50">Direct</span></span></li>
               <li className="flex items-start gap-3"><Mail className="mt-0.5 h-4 w-4 text-gold" /><a href={`mailto:${site.email}`} className="hover:text-white">{site.email}</a></li>
               <li className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 text-gold" /><span>{site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}</span></li>
               <li className="flex items-start gap-3"><Clock className="mt-0.5 h-4 w-4 text-gold" /><span>{site.hoursDisplay}</span></li>

@@ -4,6 +4,9 @@
  * Find the old URLs in Google Search Console → Pages, or from the old site's sitemap.xml.
  */
 export const redirects = [
+  // URLs confirmed on the previous site
+  { source: "/contact-us", destination: "/contact", permanent: true },
+  { source: "/services/right-of-way-clearing-and-construction-prep", destination: "/services", permanent: true },
   { source: "/home", destination: "/", permanent: true },
   { source: "/index.html", destination: "/", permanent: true },
   { source: "/about-us", destination: "/about", permanent: true },
@@ -11,7 +14,6 @@ export const redirects = [
   { source: "/gallery", destination: "/projects", permanent: true },
   { source: "/portfolio", destination: "/projects", permanent: true },
   { source: "/testimonials", destination: "/reviews", permanent: true },
-  { source: "/contact-us", destination: "/contact", permanent: true },
   { source: "/free-estimate", destination: "/contact", permanent: true },
   { source: "/remodeling", destination: "/services/home-remodeling", permanent: true },
   { source: "/kitchen-remodeling", destination: "/services/kitchen-remodeling", permanent: true },

@@ -8,19 +8,21 @@ export const site = {
   legalName: "Lion Construction TX",
   tagline: "Houston's trusted general contractor for remodeling, roofing & commercial builds",
   url: "https://www.lionconstructiontx.com",
-  // TODO: replace with the real business phone in E.164 for schema and tel: links
-  phone: "+17130000000",
-  phoneDisplay: "(713) 000-0000",
+  phone: "+18326618414",
+  phoneDisplay: "(832) 661-8414",
+  /** Direct line to the owner / project lead. */
+  phoneDirect: "+18324509100",
+  phoneDirectDisplay: "(832) 450-9100",
   email: "info@lionconstructiontx.com",
+  emailSocial: "social@lionconstructiontx.com",
   address: {
-    // TODO: replace with the real street address (or omit street for a service-area business)
-    street: "1234 Westheimer Rd",
+    street: "10660 Woodedge Dr",
     city: "Houston",
     state: "TX",
-    zip: "77077",
+    zip: "77070",
     country: "US",
   },
-  geo: { lat: 29.7604, lng: -95.3698 },
+  geo: { lat: 29.9553, lng: -95.5658 },
   hours: [
     { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "07:00", closes: "18:00" },
     { days: ["Saturday"], opens: "08:00", closes: "14:00" },

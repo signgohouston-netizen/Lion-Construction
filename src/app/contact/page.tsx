@@ -10,7 +10,7 @@ import { photo } from "@/lib/photos";
 
 export const metadata = buildMetadata({
   title: "Free Estimate | Contact Lion Construction Houston",
-  description: `Request a free on-site construction or remodeling estimate in Houston and across Texas. Call ${site.phoneDisplay} or send us your project details and we reply within one business day.`,
+  description: `Request a free on-site construction or remodeling estimate in Houston and across Texas. Call ${site.phoneDisplay} (office) or ${site.phoneDirectDisplay} (direct), or send us your project details and we reply within one business day.`,
   path: "/contact",
 });
 
@@ -21,7 +21,8 @@ export default function ContactPage() {
       <JsonLd data={contactPage} />
       <Hero compact image={photo(site.photos.clientChat)} imageAlt="Lion Construction project manager talking with a client on site" crumbs={[{ name: "Contact", path: "/contact" }]} eyebrow="Free estimate" title="Let's talk about" highlight="your project" text="Tell us what you want to build or fix. A project manager will reach out within one business day to schedule a free on-site visit.">
         <ul className="grid gap-3 text-sm">
-          <li className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3"><Phone className="h-5 w-5 text-gold" /><a href={telHref(site.phone)} className="font-semibold">{site.phoneDisplay}</a></li>
+          <li className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3"><Phone className="h-5 w-5 text-gold" /><span><a href={telHref(site.phone)} className="font-semibold">{site.phoneDisplay}</a> <span className="text-white/60">Office</span></span></li>
+          <li className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3"><Phone className="h-5 w-5 text-gold" /><span><a href={telHref(site.phoneDirect)} className="font-semibold">{site.phoneDirectDisplay}</a> <span className="text-white/60">Direct</span></span></li>
           <li className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3"><Mail className="h-5 w-5 text-gold" /><a href={`mailto:${site.email}`}>{site.email}</a></li>
           <li className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3"><MapPin className="h-5 w-5 text-gold" /><span>{site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}</span></li>
           <li className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3"><Clock className="h-5 w-5 text-gold" /><span>{site.hoursDisplay}</span></li>
