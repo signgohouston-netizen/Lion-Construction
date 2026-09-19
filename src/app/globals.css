@@ -1,26 +1,176 @@
 @import "tailwindcss";
 
+/* ---- Brand tokens ---------------------------------------------------- */
 :root {
+  /* Matches the Lion Construction logo: black + metallic gold on white.
+     The token is still named "navy" in class names (bg-navy, text-navy) but resolves to brand black. */
+  --lion-navy: #0a0a0a;
+  --lion-navy-800: #141414;
+  --lion-navy-700: #1f1f1f;
+  --lion-gold: #c9962b;
+  --lion-gold-light: #e6bb52;
+  --lion-gold-dark: #9c7118;
+  --lion-sand: #f8f4ea;
+  --lion-stone: #eadfc6;
+  --lion-ink: #111111;
+  --lion-muted: #5f5b52;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: var(--lion-ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: var(--lion-navy);
+  --color-navy-800: var(--lion-navy-800);
+  --color-navy-700: var(--lion-navy-700);
+  --color-gold: var(--lion-gold);
+  --color-gold-light: var(--lion-gold-light);
+  --color-gold-dark: var(--lion-gold-dark);
+  --color-sand: var(--lion-sand);
+  --color-stone-warm: var(--lion-stone);
+  --color-ink: var(--lion-ink);
+  --color-muted: var(--lion-muted);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-oswald), var(--font-inter), ui-sans-serif, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Typography helpers ---------------------------------------------- */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--lion-gold-dark);
+}
+
+.prose-lion p + p {
+  margin-top: 1rem;
+}
+
+/* ---- Buttons ---------------------------------------------------------- */
+.btn,
+.btn-gold,
+.btn-outline,
+.btn-navy,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.375rem;
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 150ms ease, background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+  white-space: nowrap;
+}
+.btn-gold {
+  background: var(--lion-gold);
+  color: var(--lion-navy);
+}
+.btn-gold:hover {
+  background: var(--lion-gold-light);
+  transform: translateY(-1px);
+}
+.btn-navy {
+  background: var(--lion-navy);
+  color: #fff;
+}
+.btn-navy:hover {
+  background: var(--lion-navy-700);
+}
+.btn-outline {
+  border: 2px solid currentColor;
+  color: #fff;
+  background: transparent;
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.btn-ghost {
+  color: var(--lion-navy);
+  padding-inline: 0.75rem;
+}
+.btn-ghost:hover {
+  color: var(--lion-gold-dark);
+}
+
+/* ---- Surfaces --------------------------------------------------------- */
+.card {
+  border-radius: 0.75rem;
+  border: 1px solid var(--lion-stone);
+  background: #fff;
+  transition: box-shadow 200ms ease, transform 200ms ease, border-color 200ms ease;
+}
+.card:hover {
+  border-color: var(--lion-gold);
+  box-shadow: 0 18px 40px -24px rgba(10, 10, 10, 0.45);
+  transform: translateY(-2px);
+}
+
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.blueprint {
+  background-color: var(--lion-navy);
+  background-image:
+    linear-gradient(rgba(201, 150, 43, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 150, 43, 0.09) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.gold-rule {
+  height: 4px;
+  width: 4rem;
+  background: var(--lion-gold);
+  border-radius: 2px;
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .chev {
+  transform: rotate(180deg);
+}
+
+/* Metallic gold text, echoing the logo's beveled lettering */
+.text-gold-metallic {
+  background: linear-gradient(180deg, #f0cd6a 0%, #c9962b 55%, #9c7118 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
